@@ -69,8 +69,8 @@ def extract_purchase_urls(input_source):
                         if span_before_link:
                             is_free = "Free" in span_before_link.text
                             if not only_free or is_free:
-                                response_downloaded = requests.get(download_url)
-                                soup_downloaded = BeautifulSoup(response_downloaded.content, 'html.parser')
+                                response_download = requests.get(download_url)
+                                soup_downloaded = BeautifulSoup(response_download.content, 'html.parser')
                                 if response_download.status_code == 200:  # Check if the page exists
                                     webbrowser.open_new_tab(download_url)
                                     print(f"Opened: {download_url}")
