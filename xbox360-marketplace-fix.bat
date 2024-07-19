@@ -17,4 +17,4 @@ SET "scriptName=%~n0"
 @REM https://stackoverflow.com/a/16144756
 python.exe "%scriptFolder%%scriptName%.py" %*
 
-@REM PAUSE
+PAUSE

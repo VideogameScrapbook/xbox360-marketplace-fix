@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Xbox 360 Marketplace Fix
 // @namespace    http://tampermonkey.net/
-// @version      2024-07-09
+// @version      2024-07-19
 // @description  Replaces Xbox purchase links with hyperlinks
 // @author       VideogameScrapbook
 // @match        https://marketplace.xbox.com/*
@@ -10,7 +10,7 @@
 // ==/UserScript==
 
 (function() {
-    const targetUrlPattern = /https:\/\/live\.xbox\.com\/en-US\/purchase\/xbox\/[^"]+/;
+    const targetUrlPattern = /https?:\/\/live\.xbox\.com\/[^"]+\/purchase\/xbox\/[^"]+/;
 
     const replaceLinks = () => {
         const purchaseLinks = document.querySelectorAll('a[role="button"][data-purchaseurl]');
