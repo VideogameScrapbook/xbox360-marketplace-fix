@@ -19,7 +19,7 @@ download_link_limit = 30
 #if open_download_links:
     #only_free = input("Open only free items? (y/n): ").lower() == 'y'
 
-# Init variables:
+# Initialize variables:
 download_links_opened = 0
 
 def extract_purchase_urls(input_source):
@@ -37,7 +37,7 @@ def extract_purchase_urls(input_source):
         #print(links)        
         
         # Process each link
-        for url in links:                        
+        for url in links:
             # If link is to marketplace.xbox.com, start processing it for download urls.
             if "marketplace.xbox.com" in url:
                 print(f"Adding {url} to the list of marketplace links to process.")
@@ -65,6 +65,10 @@ def extract_purchase_urls(input_source):
         print(f"Error: {e}")
 
 def open_download_urls(marketplace_links):
+    # Ensure we're working with a list of URLs
+    if isinstance(marketplace_links, str):
+        marketplace_links = [marketplace_links]
+
     # Process the expanded list of links
     for marketplace_url in marketplace_links:
         print(f"Looking for live.xbox.com links on the following page: {marketplace_url}")
@@ -98,6 +102,7 @@ def open_download_urls(marketplace_links):
                 if download_links_opened >= download_link_limit:
                     print(f"Download limit of {download_link_limit} has been reached, quitting.")
 
+# Call the function with your input source (e.g., filename or URL)
 default_input_source_filename = "xbox360-marketplace-fix.txt"
 script_dir = os.path.dirname(os.path.abspath(__file__))  # Get the script directory
 default_input_source_path = os.path.join(script_dir, default_input_source_filename)  # Make default_input_source_path relative to script_dir
